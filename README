@@ -1,3 +1,12 @@
 1.console can print when machine suspend
 	echo 10 > /proc/sys/kernel/printk
 	echo N > /sys/module/printk/parameters/console_suspend_enabled
+
+2.call machine to sleep
+	echo mem > /sys/power/state
+	or
+	echo standby > /sys/power/state
+
+3.input key at console
+	input keyevent 7 #for key '0',you can find define of number at frameworks/base/native/include/android/keycodes.h
+	input text "Android" #input string char
