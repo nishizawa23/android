@@ -1,0 +1,5 @@
+1.ctrl + a goto bash commandline forward,ctrl + e goto commendline end.
+
+2.ctrl + u delete cursor to start in commandline.ctrl + k delete cursor to end.
+
+3.ctrl + r sreach history,run history and !(number) can run history command.
