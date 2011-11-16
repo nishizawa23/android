@@ -3,3 +3,5 @@
 2.ctrl + u delete cursor to start in commandline.ctrl + k delete cursor to end.
 
 3.ctrl + r sreach history,run history and !(number) can run history command.
+
+4.ctrl + l clean screen.
