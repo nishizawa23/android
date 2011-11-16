@@ -14,3 +14,6 @@
 4.logcat how to use
 	if you just want to show message like:D/InputReaderHover( 2144): Input event: device=0x10001 type=0x1 scancode=102 keycode=3 value=0
 	logcat -s "InputReaderHover:D"
+
+5.debug wake_lock
+	echo 0x1f > /sys/module/wakelock/parameters/debug_mask
