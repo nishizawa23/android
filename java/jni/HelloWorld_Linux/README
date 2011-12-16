@@ -1,0 +1,5 @@
+1.javac HelloWorld.java
+2.javah -jni HelloWorld
+3.g++ -I/usr/lib/jvm/java-6-sun/include/linux/ -I/usr/lib/jvm/java-6-sun/include/ -fPIC -shared -o libHelloWorld.so HelloWorld.cpp
+4.java -Djava.library.path='.' HelloWorld
+5.java HelloWorld
