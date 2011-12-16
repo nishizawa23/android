@@ -19,3 +19,12 @@ Java_HelloWorld_print(JNIEnv *env, jobject obj)
 		cout << "Hello World!\n";
 }
 
+JNIEXPORT void JNICALL
+
+Java_HelloWorld_SayHello(JNIEnv *env, jobject obj,jstring instring)
+{
+	const jbyte *str =
+		(const jbyte *)env->GetStringUTFChars(instring,JNI_FALSE);
+		cout << str;
+		env->ReleaseStringUTFChars(instring,(const char*)str);
+}
