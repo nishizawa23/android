@@ -1,0 +1,3 @@
+1.build error: do_inode_allocate_extents: Failed to allocate 71 blocks
+	vim system/extras/ext4_utils/mkuserimg.sh line 44
+	change SIZE=280M to bigger
