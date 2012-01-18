@@ -17,3 +17,7 @@
 
 5.debug wake_lock
 	echo 0x1f > /sys/module/wakelock/parameters/debug_mask
+
+6.make android quickly
+	make -j16 > info 2>&1&
+	gf
