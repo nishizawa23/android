@@ -21,3 +21,6 @@
 6.make android quickly
 	make -j16 > info 2>&1&
 	gf
+
+7.repo rest tags
+	repo forall -p -c git reset --hard android-4.0.4_r2.1
