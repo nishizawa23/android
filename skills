@@ -9,3 +9,5 @@
 5.ecplise ctrl + F10 to set line number.
 
 6.delete git file use:git rm.
+
+7.show the file size:du -sm or du -sk.
