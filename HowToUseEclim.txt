@@ -1,0 +1,7 @@
+projectsTree 打开当前project的树状图
+
+let g:EclimProjectTreeAutoOpen=1 默认打开树状图
+
+:Validate 就可以让eclim帮你检查可能有错的行，并会用双左向箭头标注出来
+
+:JavaCorrect 然后你把光标移到该行就，可以让eclim给你修改建议
