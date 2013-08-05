@@ -1,24 +1,46 @@
-class DogException extends Exception{
+class DogExceptionOne extends Exception{
     private static final long serialVersionUID = 1L;   
 
-    DogException(){
-	    System.out.println("ahhah");
-	//  this.printStackTrace();
+    DogExceptionOne(){
+	    System.out.println("DogException One!!");
     }
 
-    DogException(String	smg){
+    DogExceptionOne(String	smg){
 	    super(smg);
+    }
+
+    void DogDug(){
+	    this.printStackTrace();
+    }
+}
+
+class DogExceptionTwo extends Exception{
+    private static final long serialVersionUID = 1L;   
+
+    DogExceptionTwo(){
+	    System.out.println("DogException Two!!");
+    }
+
+    DogExceptionTwo(String smg){
+	    super(smg);
+    }
+
+    void DogDug(){
+	    this.printStackTrace();
     }
 }
 
 class Dog{
-
+	boolean dogdug;
 	int size;
 	String name;
 
-	void brark() throws DogException{
+	void brark() throws DogExceptionOne,DogExceptionTwo{
 		System.out.println("wang wang!");
-	        throw new DogException();  
+		if(dogdug)
+	        	throw new DogExceptionOne();  
+		else
+	        	throw new DogExceptionTwo();  
 	}
 } 
 
@@ -27,12 +49,23 @@ public class ExceptionExample{
 	public static void main(String[] args) {   
 
 		Dog d = new Dog();
+		d.dogdug = true;
+
 	 	try{
 	 		d.brark();
-	 	}catch(DogException e){
-			System.out.println("wangwangwangwang!");
-	 	}finally{
-			System.out.println("miaomiao");
+	 	}catch(DogExceptionOne e){
+
+			System.out.println("miao!");
+			e.DogDug();
+
+		}catch(DogExceptionTwo e){
+			
+			System.out.println("miao!miao!");
+			e.DogDug();
+		}
+		finally{
+
+			System.out.println("wangwang!");
 	 	} 
 	} 
 }
