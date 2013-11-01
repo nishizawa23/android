@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content">
+  <TextView
+  android:layout_width="40dp"
+  android:layout_height="wrap_content"
+  android:textSize="20sp"
+  android:id="@+id/personidtitle"
+  android:text="编号"
+  />
+   <TextView
+  android:layout_width="200dp"
+  android:layout_height="wrap_content"
+   android:textSize="20sp"
+  android:layout_toRightOf="@id/personidtitle"
+   android:layout_alignTop="@id/personidtitle"
+   android:gravity="center_horizontal"
+   android:id="@+id/nametitle"
+   android:text="姓名"
+  />
+   <TextView
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+   android:textSize="20sp"
+  android:layout_toRightOf="@id/nametitle"
+   android:layout_alignTop="@id/nametitle"
+   android:id="@+id/agetitle"
+   android:text="年龄"
+  />
+</RelativeLayout>
+<ListView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:id="@+id/listView"
+    />
+</LinearLayout>

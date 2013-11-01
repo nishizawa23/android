@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    <!-- 方向horizontal竖直，vertical水平 -->
+    <!--match_parent The view should be as big as its parent -->
+    <!--wrap_content The view should be only big enough to enclose its content 大到只包含它的内容-->
+    <!-- fill_parent The view should be as big as its parent (minus padding). API level 8以后弃用，用match_parent代替 -->
+        <EditText android:id="@+id/edit_message"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_message" />
+        <!-- android:hint This is a default string to display when the text field is empty. -->
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_send" 
+        android:onClick="sendMessage"/>
+</LinearLayout>
