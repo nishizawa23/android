@@ -10,12 +10,12 @@ import android.util.Log;
 public class MainService  extends Service {
 	private static final String TAG = "ServiceApp";
     /**
-     * ÔÚ Local Service ÖĞÎÒÃÇÖ±½Ó¼Ì³Ğ Binder ¶ø²»ÊÇ IBinder,ÒòÎª Binder ÊµÏÖÁË IBinder ½Ó¿Ú£¬ÕâÑùÎÒÃÇ¿ÉÒÔÉÙ×öºÜ¶à¹¤×÷¡£
+     * ï¿½ï¿½ Local Service ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó¼Ì³ï¿½ Binder ï¿½ï¿½ï¿½ï¿½ IBinder,ï¿½ï¿½Îª Binder Êµï¿½ï¿½ï¿½ï¿½ IBinder ï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¶à¹¤ï¿½ï¿½ï¿½ï¿½
      * @author newcj
      */
     public class SimpleBinder extends Binder{
         /**
-         * »ñÈ¡ Service ÊµÀı
+         * ï¿½ï¿½È¡ Service Êµï¿½ï¿½
          * @return
          */
         public MainService getService(){
@@ -28,12 +28,12 @@ public class MainService  extends Service {
         }
     }
      
-    public SimpleBinder sBinder;
+	public SimpleBinder sBinder;
      
     @Override
     public void onCreate() {
         super.onCreate();
-        // ´´½¨ SimpleBinder
+        // ï¿½ï¿½ï¿½ï¿½ SimpleBinder
         Log.i(TAG,"onCreate");
         sBinder = new SimpleBinder();
     }
@@ -41,14 +41,14 @@ public class MainService  extends Service {
     @Override
     public IBinder onBind(Intent intent) {
     	Log.i(TAG,"onBind");
-        // ·µ»Ø SimpleBinder ¶ÔÏó
+        // ï¿½ï¿½ï¿½ï¿½ SimpleBinder ï¿½ï¿½ï¿½ï¿½
         return sBinder;
     }
     
     public void onDestroy() {  
         Log.i(TAG, "Service onDestroy--->");  
     }  
-    // µ±½â³ı°ó¶¨Ê±µ÷ÓÃ  
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½  
     public boolean onUnbind(Intent intent) {    
         Log.i(TAG, "Service onUnbind--->");    
         return super.onUnbind(intent);    

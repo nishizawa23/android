@@ -4,7 +4,7 @@
     <string name="app_name">android service native</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="button_start">start</string>
-    <string name="button_stop">stop</string>
+    <string name="button_start">Start LocalService</string>
+    <string name="button_stop">Stop LocalService</string>
 
 </resources>

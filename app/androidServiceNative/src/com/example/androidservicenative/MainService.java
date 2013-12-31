@@ -21,13 +21,21 @@ public class MainService  extends Service {
             super.onCreate(); 
     } 
     
+    @Override
+	public int onStartCommand(Intent intent,int flags,int startId){
+		super.onStartCommand(intent, flags, startId);
+		Log.i(TAG,"st onStartCommand");
+		return START_STICKY;
+    	
+    }
+    /*
 	@SuppressWarnings("deprecation")
 	@Override 
     public void onStart(Intent intent, int startId) { 
             Log.i(TAG, "onStart"); 
             super.onStart(intent, startId); 
     }
-	
+	*/
     @Override 
     public void onDestroy() { 
             Log.i(TAG, "onDestroy"); 

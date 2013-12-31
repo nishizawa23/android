@@ -22,10 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <service android:name="com.example.androidserviceonbind.MainService"> 
-            
-		</service>
+
+        <service android:name="com.example.androidservicenative.MainService" >
+        </service>
     </application>
 
 </manifest>

@@ -1,74 +1,82 @@
 package com.example.androidserviceonbind;
 
+import com.example.androidserviceonbind.MainService.SimpleBinder;
+
 import android.os.Bundle;
 import android.os.IBinder;
 import android.app.Activity;
 import android.app.Service;
 import android.content.ComponentName;
-
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-
 import android.widget.Button;
 
-public class MainActivity extends Activity  {
-	private Button bindBtn,unbindBtn;  
+public class MainActivity extends Activity {
+	private Button bindBtn, unbindBtn;
+	private SimpleBinder mSimpleBinder;
+	private int addReturn;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Log.i("APP", "Onclickkk");
-		 
-        bindBtn = (Button)findViewById(R.id.button1);  
-        unbindBtn = (Button)findViewById(R.id.button2);  
-          
-        // Ìí¼Ó¼àÌýÆ÷  
-        bindBtn.setOnClickListener(bindListener);
-//        bindBtn.setOnClickListener((android.view.View.OnClickListener) this);
-        unbindBtn.setOnClickListener(unBindListener);  
-     }
-      
-   // Á¬½Ó¶ÔÏó  
-		private ServiceConnection conn = new ServiceConnection() {  
-        @Override 
-        	public void onServiceConnected(ComponentName name, IBinder service) {  
-            Log.i("Service", "Á¬½Ó³É¹¦£¡");  
-        	}  
-        @Override 
-        	public void onServiceDisconnected(ComponentName name) {  
-            Log.i("Service", "¶Ï¿ªÁ¬½Ó£¡");  
-        	}  
-		};  
-      
-    // ½‰¶¨Service¼àÌýÆ÷  
-    private OnClickListener bindListener = new OnClickListener() {  
-        @Override 
-        public void onClick(View v) {  
-            // ´´½¨Intent  
-            Intent intent = new Intent();  
-            // ÉèÖÃClassÊôÐÔ  
-            intent.setClass(MainActivity.this, MainService.class);  
-           
-            // °ó¶¨Service  
-            Log.i("APP", "Onclickk");
-            bindService(intent, conn, Service.BIND_AUTO_CREATE);  
-        }  
-    };
-          
-    // ½â³ý°ó¶¨Service¼àÌýÆ÷  
-    private OnClickListener unBindListener = new OnClickListener() {  
-        @Override 
-        public void onClick(View v) {  
-            // ´´½¨Intent  
-            Intent intent = new Intent();  
-            // ÉèÖÃClassÊôÐÔ  
-            intent.setClass(MainActivity.this, MainService.class);  
-            // ½â³ý°ó¶¨Service  
-            unbindService(conn);  
-        }  
-    };
-}
+		Log.i("APP", "onCreate");
 
+		bindBtn = (Button) findViewById(R.id.button1);
+		unbindBtn = (Button) findViewById(R.id.button2);
+
+		// ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½
+		bindBtn.setOnClickListener(bindListener);
+		// bindBtn.setOnClickListener((android.view.View.OnClickListener) this);
+		unbindBtn.setOnClickListener(unBindListener);
+	}
+
+	// ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+	private ServiceConnection conn = new ServiceConnection() {
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			Log.i("Service", "ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½");
+
+			mSimpleBinder = (SimpleBinder) service;
+			addReturn = mSimpleBinder.add(1, 3);
+			Log.i("Service", "ComponentName is " + name.toString()
+					+ " addReturn is " + addReturn);
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			Log.i("Service", "ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ó£ï¿½");
+		}
+	};
+
+	// ï¿½ï¿½ï¿½ï¿½Serviceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private OnClickListener bindListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			// ï¿½ï¿½ï¿½ï¿½Intent
+			Intent intent = new Intent();
+			// ï¿½ï¿½ï¿½ï¿½Classï¿½ï¿½ï¿½ï¿½
+			intent.setClass(MainActivity.this, MainService.class);
+
+			// ï¿½ï¿½Service
+			Log.i("APP", "Onclick");
+			bindService(intent, conn, Service.BIND_AUTO_CREATE);
+		}
+	};
+
+	// ï¿½ï¿½ï¿½ï¿½Serviceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private OnClickListener unBindListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			// ï¿½ï¿½ï¿½ï¿½Intent
+			Intent intent = new Intent();
+			// ï¿½ï¿½ï¿½ï¿½Classï¿½ï¿½ï¿½ï¿½
+			intent.setClass(MainActivity.this, MainService.class);
+			// ï¿½ï¿½ï¿½ï¿½Service
+			unbindService(conn);
+		}
+	};
+}
