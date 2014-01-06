@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			// TODO Auto-generated method stub
 			mService = IRemoteService.Stub.asInterface(service);
+			TaskInfo mTaskInfo;
 			Log.d(TAG, TAG + " Service Connected.");
 			try {
 				mService.getCount();
@@ -60,6 +61,16 @@ public class MainActivity extends Activity {
 			try {
 				Log.d(TAG, "MainActivity ---> getPid()");
 				mService.getPid(mCounter);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			try {
+				Log.d(TAG, "MainActivity ---> getTaskInfo()");
+				mTaskInfo = mService.getTaskInfo();
+				Log.d(TAG, "getTaskInfo : " + "TaskInfo.mPss is "
+						+ mTaskInfo.mPss + " TaskInfo.mPid is "
+						+ mTaskInfo.mPid + " TaskInfo.mPackageName is "
+						+ mTaskInfo.mPackageName);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}

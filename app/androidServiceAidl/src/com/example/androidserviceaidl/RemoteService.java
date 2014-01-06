@@ -2,6 +2,7 @@ package com.example.androidserviceaidl;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Debug;
 import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteException;
@@ -37,6 +38,25 @@ public class RemoteService extends Service {
 			Log.d(TAG, "at RemoteService getPid");
 			callback.valueCounted(mCount);
 			return Process.myPid();
+		}
+
+		@Override
+		public TaskInfo getTaskInfo() throws RemoteException {
+			// TODO Auto-generated method stub
+			TaskInfo mTaskInfo = new TaskInfo();
+			mTaskInfo.mUid = Process.myUid();
+			Debug.MemoryInfo memInfo = new Debug.MemoryInfo();
+			Debug.getMemoryInfo(memInfo);
+			mTaskInfo.mPss = memInfo.nativePss;
+
+			Runtime runtime = Runtime.getRuntime();
+			mTaskInfo.mTotalMemory = runtime.totalMemory();
+
+			mTaskInfo.mPid = Debug.getBinderReceivedTransactions();
+			mTaskInfo.mElapsedTime = Process.getElapsedCpuTime();
+			mTaskInfo.mPackageName = getPackageName();
+			return mTaskInfo;
+
 		}
 	};
 
