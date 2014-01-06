@@ -50,6 +50,16 @@ reply.writeNoException();
 reply.writeInt(_result);
 return true;
 }
+case TRANSACTION_getPid:
+{
+data.enforceInterface(DESCRIPTOR);
+com.example.androidserviceaidl.ITaskServiceCallBack _arg0;
+_arg0 = com.example.androidserviceaidl.ITaskServiceCallBack.Stub.asInterface(data.readStrongBinder());
+int _result = this.getPid(_arg0);
+reply.writeNoException();
+reply.writeInt(_result);
+return true;
+}
 }
 return super.onTransact(code, data, reply, flags);
 }
@@ -85,8 +95,28 @@ _data.recycle();
 }
 return _result;
 }
+@Override public int getPid(com.example.androidserviceaidl.ITaskServiceCallBack callback) throws android.os.RemoteException
+{
+android.os.Parcel _data = android.os.Parcel.obtain();
+android.os.Parcel _reply = android.os.Parcel.obtain();
+int _result;
+try {
+_data.writeInterfaceToken(DESCRIPTOR);
+_data.writeStrongBinder((((callback!=null))?(callback.asBinder()):(null)));
+mRemote.transact(Stub.TRANSACTION_getPid, _data, _reply, 0);
+_reply.readException();
+_result = _reply.readInt();
+}
+finally {
+_reply.recycle();
+_data.recycle();
+}
+return _result;
+}
 }
 static final int TRANSACTION_getCount = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
+static final int TRANSACTION_getPid = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
 }
 public int getCount() throws android.os.RemoteException;
+public int getPid(com.example.androidserviceaidl.ITaskServiceCallBack callback) throws android.os.RemoteException;
 }
