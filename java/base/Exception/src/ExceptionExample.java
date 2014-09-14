@@ -38,7 +38,7 @@ class Dog{
 	void brark() throws DogExceptionOne,DogExceptionTwo{
 		System.out.println("wang wang!");
 		if(dogdug)
-	        	throw new DogExceptionOne();  
+	        	throw new DogExceptionOne("this is DogExceptionOne");  
 		else
 	        	throw new DogExceptionTwo();  
 	}
@@ -56,6 +56,8 @@ public class ExceptionExample{
 	 	}catch(DogExceptionOne e){
 
 			System.out.println("miao!");
+			System.out.println("getMessage : " + e.getMessage());
+			System.out.println("toString : " + e.toString());
 			e.DogDug();
 
 		}catch(DogExceptionTwo e){
